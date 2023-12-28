@@ -1,6 +1,7 @@
 #!/bin/bash
 #SET DEFAULT LOCATION
 default_location="/Repos"
+default_branch="master"
 
 if [ -z "$1" ]; then
 repo_location=$default_location
@@ -15,5 +16,5 @@ fi
 
 cd $repo_location
 echo "Updating all repos in " "$(pwd)"
-ls -d */| xargs -I{} sh -c 'echo "***** Updating" {} && git -C {} checkout master && git -C {} pull'
+ls -d */| xargs -I{} sh -c 'echo "***** Updating" {} && git -C {} checkout $default_branch && git -C {} pull'
 exit
